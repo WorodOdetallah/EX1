@@ -19,6 +19,33 @@ public class Ex1 {
      * @param num a String representing a number in basis [2,16]
      * @return
      */
+
+
+
+    /**
+    an explanation for myself .... 
+ * Converts a formatted number string to its decimal (base-10) equivalent.
+ * 
+ * @param num A string in the format "<number>b<base>".
+ *            Example: "1011b2" (binary), "FFb16" (hexadecimal).
+ * @return The decimal value of the number, or -1 if the input is invalid.
+ * 
+ * Assumptions:
+ * - Input format is "<number>b<base>" where:
+ *   - <number> is a string of digits or letters valid in the given base.
+ *   - <base> is a digit (2-16) or a single letter (A-G) representing bases 10-16.
+ * 
+ * Edge Cases:
+ * - Null or empty input: returns -1.
+ * - Invalid format (e.g., "123b", "b16"): returns -1.
+ * - Valid input but invalid digits for the base: returns -1.
+ * 
+ * Example:
+ * - Input: "1011b2" → Output: 11
+ * - Input: "FFb16" → Output: 255
+ * - Input: "123bA" → Output: 123 (base-10 by default)
+ */
+
     public static int number2Int(String num) {
         int ans = -1;
 
@@ -55,6 +82,30 @@ public class Ex1 {
      * @param a a String representing a number
      * @return true iff the given String is in a number format
      */
+
+    /**
+ * Checks if a string is a valid formatted number in any base [2-16].
+ * 
+ * @param a The string to check.
+ *          Example: "1011b2" (binary), "123bA" (base-10), "EFbG" (base-16).
+ * @return True if the string is valid, false otherwise.
+ * 
+ * Validation Rules:
+ * - The string must contain a base identifier ('b') separating the number and base.
+ * - The base must be in the range [2,16], represented as a digit (2-9) or a letter (A-G).
+ * - The number must only use digits or letters valid for the given base.
+ * 
+ * Edge Cases:
+ * - Null or empty input: returns false.
+ * - Invalid base (e.g., "b1", "b17"): returns false.
+ * - Invalid characters for the base (e.g., "10b2", "Gh2"): returns false.
+ * 
+ * Example:
+ * - Input: "1011b2" → Output: true
+ * - Input: "0bA" → Output: true
+ * - Input: "1234b11" → Output: false (invalid base)
+ */
+
     public static boolean isNumber(String a) {
         boolean ans = true;
 
@@ -114,6 +165,12 @@ public class Ex1 {
      * @param base the basis [2,16]
      * @return a String representing a number (in base) equals to num, or an empty String (in case of wrong input).
      */
+
+
+// Example usage of int2Number:
+// Input: num = 11, base = 2
+// Output: "1011b2" (binary representation of 11)
+
     public static String int2Number(int num, int base) {
         String ans = ""; // Default to empty for invalid cases
         if (num < 0 || base < 2 || base > 16) {
@@ -127,12 +184,12 @@ public class Ex1 {
             num /= base;
         }
 
-        if (result.isEmpty()) { // More concise than result.length() == 0
+        if (result.isEmpty()) { 
             result.append('0');
         }
 
         char baseChar = base > 10 ? (char) ('A' + base - 10) : (char) ('0' + base);
-        ans = result + "b" + baseChar; // No unnecessary .toString() call
+        ans = result + "b" + baseChar; 
         return ans;
     }
 
